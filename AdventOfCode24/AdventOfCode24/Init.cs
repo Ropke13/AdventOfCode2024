@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode24
+﻿namespace AdventOfCode24
 {
     internal static class Init
     {
@@ -29,6 +23,11 @@ namespace AdventOfCode24
                         var selectedDay3 = new Day3();
                         selectedDay3.Part1();
                         selectedDay3.Part2();
+                        break;
+                    case 4:
+                        var selectedDay4 = new Day4();
+                        selectedDay4.Part1();
+                        selectedDay4.Part2();
                         break;
 
                     default:
