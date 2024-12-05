@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            int[] DaysToPlay = [1, 2, 3, 4];
+            int[] DaysToPlay = [1, 2, 3, 4, 5];
 
             Init.DaysDisplay(DaysToPlay);
 

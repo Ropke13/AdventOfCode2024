@@ -29,6 +29,11 @@
                         selectedDay4.Part1();
                         selectedDay4.Part2();
                         break;
+                    case 5:
+                        var selectedDay5 = new Day4();
+                        selectedDay5.Part1();
+                        selectedDay5.Part2();
+                        break;
 
                     default:
                         Console.WriteLine($"Day {day} is not implemented.");
