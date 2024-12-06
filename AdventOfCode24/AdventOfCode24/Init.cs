@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode24
+﻿using System.Diagnostics;
+
+namespace AdventOfCode24
 {
     internal static class Init
     {
@@ -7,6 +9,8 @@
             foreach (int day in days)
             {
                 Console.WriteLine("==================================");
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 switch (day)
                 {
                     case 1:
@@ -30,7 +34,7 @@
                         selectedDay4.Part2();
                         break;
                     case 5:
-                        var selectedDay5 = new Day4();
+                        var selectedDay5 = new Day5();
                         selectedDay5.Part1();
                         selectedDay5.Part2();
                         break;
@@ -39,6 +43,8 @@
                         Console.WriteLine($"Day {day} is not implemented.");
                         break;
                 }
+                stopwatch.Stop();
+                Console.WriteLine($"FunctionOne Execution Time: {stopwatch.ElapsedMilliseconds} ms");
             }
         }
     }
