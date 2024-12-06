@@ -49,7 +49,12 @@ namespace AdventOfCode24
                         break;
                 }
                 stopwatch.Stop();
+
+                if (stopwatch.ElapsedMilliseconds < 1000) Console.ForegroundColor = ConsoleColor.Green;
+                else Console.ForegroundColor = ConsoleColor.Red;
+
                 Console.WriteLine($"Execution Time of the Day: {stopwatch.ElapsedMilliseconds} ms");
+                Console.ResetColor();
             }
         }
     }

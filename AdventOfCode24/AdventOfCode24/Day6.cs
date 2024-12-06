@@ -4,7 +4,6 @@
     {
         private readonly string[] input;
         private readonly HashSet<(int a, int b)> Visited = [];
-        private readonly Dictionary<string, int> loops = [];
         private readonly List<(int a, int b)> DirectionsPart1 =
             [
                (0, 1),  // Right
@@ -55,7 +54,6 @@
             Parallel.For(0, Visits.Count, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount }, i =>
             {
                 string[] localTempInput = [.. tempInput];
-                var localLoops = new Dictionary<string, int>();
                 int localAnswer = 0;
 
                 (int a, int b) = Visits[i];
@@ -64,50 +62,28 @@
 
                 (int startY, int startX) = (startYSave, startXSave);
                 int localDirection = 3;
+                bool localIsLoop = true;
 
-                while (true)
+                for (int s = 0; s < input.Length * 4 * input[0].Length; s++)
                 {
                     int nextY = startY + DirectionsPart1[localDirection].a;
                     int nextX = startX + DirectionsPart1[localDirection].b;
 
                     if (IsOutOfBounds(nextY, nextX))
                     {
-                        localTempInput = [.. tempInput];
-                        localLoops.Clear();
-                        localDirection = 3;
+                        localIsLoop = false;
                         break;
                     }
-
-                    if (localTempInput[nextY][nextX] == '#')
-                    {
-                        localDirection = (localDirection + 1) % 4;
-                    }
+                     
+                    if (localTempInput[nextY][nextX] == '#') localDirection = (localDirection + 1) % 4;
                     else
                     {
                         startY = nextY;
                         startX = nextX;
-
-                        string key = $"{startY},{startX},{localDirection}";
-
-                        if (localLoops.TryGetValue(key, out int value))
-                        {
-                            localLoops[key] = value + 1;
-                        }
-                        else
-                        {
-                            localLoops[key] = 1;
-                        }
-
-                        if (localLoops[key] > 1)
-                        {
-                            localAnswer++;
-                            localTempInput = [.. tempInput];
-                            localLoops.Clear();
-                            localDirection = 3;
-                            break;
-                        }
                     }
                 }
+
+                if (localIsLoop) localAnswer++;
 
                 lock (lockObject)
                 {
