@@ -29,11 +29,7 @@
                     Console.WriteLine($"Day 6 Part 1 answer: {Visited.Count}");
                     break;
                 }
-                if (input[startY + DirectionsPart1[currectDirection].a][startX + DirectionsPart1[currectDirection].b] == '#')
-                {
-                    if (currectDirection == 3) currectDirection = 0;
-                    else currectDirection++;
-                }
+                if (input[startY + DirectionsPart1[currectDirection].a][startX + DirectionsPart1[currectDirection].b] == '#') currectDirection = (currectDirection + 1) % 4;
                 else
                 {
                     startY += DirectionsPart1[currectDirection].a;
