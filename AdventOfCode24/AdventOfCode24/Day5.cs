@@ -3,8 +3,8 @@
     internal class Day5
     {
         private readonly string[] input;
-        private List<(int a, int b)> rules;
-        private List<List<int>> updates;
+        private List<(int a, int b)> rules = [];
+        private List<List<int>> updates = [];
         private (int a, int b) swap;
 
         public Day5()

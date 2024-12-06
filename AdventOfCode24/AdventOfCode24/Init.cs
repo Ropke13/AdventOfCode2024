@@ -9,7 +9,7 @@ namespace AdventOfCode24
             foreach (int day in days)
             {
                 Console.WriteLine("==================================");
-                Stopwatch stopwatch = new Stopwatch();
+                Stopwatch stopwatch = new();
                 stopwatch.Start();
                 switch (day)
                 {
@@ -38,13 +38,18 @@ namespace AdventOfCode24
                         selectedDay5.Part1();
                         selectedDay5.Part2();
                         break;
+                    case 6:
+                        var selectedDay6 = new Day6();
+                        selectedDay6.Part1();
+                        selectedDay6.Part2();
+                        break;
 
                     default:
                         Console.WriteLine($"Day {day} is not implemented.");
                         break;
                 }
                 stopwatch.Stop();
-                Console.WriteLine($"FunctionOne Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+                Console.WriteLine($"Execution Time of the Day: {stopwatch.ElapsedMilliseconds} ms");
             }
         }
     }
