@@ -2,7 +2,7 @@
 
 namespace AdventOfCode24
 {
-    internal class Day3
+    internal class Day3 : IDay
     {
         private readonly string input;
         private readonly string pattern1 = @"mul\((\d{1,3}),(\d{1,3})\)";

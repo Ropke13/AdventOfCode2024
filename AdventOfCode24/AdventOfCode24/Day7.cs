@@ -2,7 +2,7 @@
 
 namespace AdventOfCode24
 {
-    internal class Day7
+    internal class Day7 : IDay
     {
         private readonly string[] input;
         private readonly Dictionary<long, List<int>> ParsedInput = [];

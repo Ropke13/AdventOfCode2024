@@ -1,66 +1,57 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 
-namespace AdventOfCode24
+internal static class Init
 {
-    internal static class Init
+    public static void DaysDisplay(int[] days)
     {
-        public static void DaysDisplay(int[] days)
+        foreach (int day in days)
         {
-            foreach (int day in days)
+            Console.WriteLine("==================================");
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
+
+            IDay dayInstance = DayFactory.GetDayInstance(day);
+
+            if (dayInstance != null)
             {
-                Console.WriteLine("==================================");
-                Stopwatch stopwatch = new();
-                stopwatch.Start();
-                switch (day)
-                {
-                    case 1:
-                        var selectedDay1 = new Day1();
-                        selectedDay1.Part1();
-                        selectedDay1.Part2();
-                        break;
-                    case 2:
-                        var selectedDay2 = new Day2();
-                        selectedDay2.Part1();
-                        selectedDay2.Part2();
-                        break;
-                    case 3:
-                        var selectedDay3 = new Day3();
-                        selectedDay3.Part1();
-                        selectedDay3.Part2();
-                        break;
-                    case 4:
-                        var selectedDay4 = new Day4();
-                        selectedDay4.Part1();
-                        selectedDay4.Part2();
-                        break;
-                    case 5:
-                        var selectedDay5 = new Day5();
-                        selectedDay5.Part1();
-                        selectedDay5.Part2();
-                        break;
-                    case 6:
-                        var selectedDay6 = new Day6();
-                        selectedDay6.Part1();
-                        selectedDay6.Part2();
-                        break;
-                    case 7:
-                        var selectedDay7 = new Day7();
-                        selectedDay7.Part1();
-                        selectedDay7.Part2();
-                        break;
-
-                    default:
-                        Console.WriteLine($"Day {day} is not implemented.");
-                        break;
-                }
-                stopwatch.Stop();
-
-                if (stopwatch.ElapsedMilliseconds < 1000) Console.ForegroundColor = ConsoleColor.Green;
-                else Console.ForegroundColor = ConsoleColor.Red;
-
-                Console.WriteLine($"Execution Time of the Day: {stopwatch.ElapsedMilliseconds} ms");
-                Console.ResetColor();
+                dayInstance.Part1();
+                dayInstance.Part2();
             }
+            else
+            {
+                Console.WriteLine($"Day {day} is not implemented.");
+            }
+
+            stopwatch.Stop();
+
+            if (stopwatch.ElapsedMilliseconds < 1000) Console.ForegroundColor = ConsoleColor.Green;
+            else Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine($"Execution Time of the Day: {stopwatch.ElapsedMilliseconds} ms");
+            Console.ResetColor();
         }
+    }
+}
+public interface IDay
+{
+    void Part1();
+    void Part2();
+}
+
+internal static class DayFactory
+{
+    public static IDay GetDayInstance(int day)
+    {
+        // Assuming classes follow the naming convention "DayX"
+        string className = $"AdventOfCode24.Day{day}";
+        Type type = Assembly.GetExecutingAssembly().GetType(className);
+
+        if (type != null && typeof(IDay).IsAssignableFrom(type))
+        {
+            return Activator.CreateInstance(type) as IDay;
+        }
+
+        return null;
     }
 }

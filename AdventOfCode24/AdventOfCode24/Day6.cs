@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode24
 {
-    internal class Day6
+    internal class Day6 : IDay
     {
         private readonly string[] input;
         private readonly HashSet<(int a, int b)> Visited = [];

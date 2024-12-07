@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode24
 {
-    internal class Day4
+    internal class Day4 : IDay
     {
         private int count = 0;
         private readonly string[] input;

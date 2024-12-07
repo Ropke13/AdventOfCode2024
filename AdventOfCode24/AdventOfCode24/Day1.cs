@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode24
 {
-    internal class Day1
+    internal class Day1 : IDay
     {
         private readonly string[] input;
         private readonly List<int> number1 = [];
