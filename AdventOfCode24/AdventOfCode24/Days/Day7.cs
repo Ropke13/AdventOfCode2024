@@ -7,6 +7,7 @@ namespace AdventOfCode24.Days
     {
         private readonly string[] input;
         private readonly Dictionary<long, List<int>> ParsedInput = [];
+        readonly object lockObject = new();
 
         public Day7()
         {
@@ -35,7 +36,10 @@ namespace AdventOfCode24.Days
                 var item = ParsedInput.ElementAt(i);
                 if (CanMakeEquationTrue(item.Key, item.Value))
                 {
-                    totalCalibrationResult += item.Key;
+                    lock (lockObject)
+                    {
+                        totalCalibrationResult += item.Key;
+                    }
                 }
             });
 
@@ -51,7 +55,10 @@ namespace AdventOfCode24.Days
                 var item = ParsedInput.ElementAt(i);
                 if (CanMakeEquationTruePart2(item.Key, item.Value))
                 {
-                    totalCalibrationResult += item.Key;
+                    lock (lockObject)
+                    {
+                        totalCalibrationResult += item.Key;
+                    }
                 }
             });
 
@@ -71,6 +78,7 @@ namespace AdventOfCode24.Days
 
         static bool EvaluatePart1(List<int> numbers, long target, int index, long current)
         {
+            if (current > target) return false;
             if (index == numbers.Count - 1)
             {
                 return current == target;
@@ -83,6 +91,7 @@ namespace AdventOfCode24.Days
 
         static bool EvaluatePart2(List<int> numbers, long target, int index, long current)
         {
+            if (current > target) return false;
             if (index == numbers.Count - 1)
             {
                 return current == target;
