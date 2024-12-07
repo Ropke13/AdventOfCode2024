@@ -43,6 +43,11 @@ namespace AdventOfCode24
                         selectedDay6.Part1();
                         selectedDay6.Part2();
                         break;
+                    case 7:
+                        var selectedDay7 = new Day7();
+                        selectedDay7.Part1();
+                        selectedDay7.Part2();
+                        break;
 
                     default:
                         Console.WriteLine($"Day {day} is not implemented.");
