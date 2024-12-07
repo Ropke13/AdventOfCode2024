@@ -90,7 +90,7 @@ namespace AdventOfCode24
             long nextNumber = numbers[index + 1];
             return EvaluatePart2(numbers, target, index + 1, current + nextNumber) ||
                    EvaluatePart2(numbers, target, index + 1, current * nextNumber) ||
-                   EvaluatePart2(numbers, target, index + 1, long.Parse(current.ToString() + nextNumber.ToString()));
+                   EvaluatePart2(numbers, target, index + 1, long.Parse($"{current}{nextNumber}"));
         }
     }
 }
