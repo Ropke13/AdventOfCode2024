@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode24
+﻿using AdventOfCode24.Interfaces;
+
+namespace AdventOfCode24.Days
 {
     internal class Day2 : IDay
     {
@@ -53,9 +55,9 @@
                             break;
                         }
                     }
-                    
+
                 }
-                
+
             }
 
             Console.WriteLine($"Day 2 Part 2 answer: {count}");

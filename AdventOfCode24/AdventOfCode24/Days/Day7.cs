@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using AdventOfCode24.Interfaces;
 
-namespace AdventOfCode24
+namespace AdventOfCode24.Days
 {
     internal class Day7 : IDay
     {

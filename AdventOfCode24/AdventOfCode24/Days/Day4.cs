@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode24
+﻿using AdventOfCode24.Interfaces;
+
+namespace AdventOfCode24.Days
 {
     internal class Day4 : IDay
     {
@@ -120,7 +122,7 @@
                     char char1 = input[newY1][newX1];
                     char char2 = input[newY2][newX2];
 
-                    if ((char1 == 'M' && char2 == 'S') || (char1 == 'S' && char2 == 'M'))
+                    if (char1 == 'M' && char2 == 'S' || char1 == 'S' && char2 == 'M')
                         return true;
                 }
             }

@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode24
+﻿using AdventOfCode24.Interfaces;
+
+namespace AdventOfCode24.Days
 {
     internal class Day6 : IDay
     {
@@ -7,9 +9,9 @@
         private readonly List<(int a, int b)> DirectionsPart1 =
             [
                (0, 1),  // Right
-               (1, 0),  // Down
-               (0, -1), // Left
-               (-1, 0), // Up
+                (1, 0),  // Down
+                (0, -1), // Left
+                (-1, 0), // Up
             ];
         int currectDirection = 3;
 
@@ -25,7 +27,8 @@
             while (true)
             {
                 Visited.Add((startY, startX));
-                if (IsOutOfBounds(startY + DirectionsPart1[currectDirection].a, startX + DirectionsPart1[currectDirection].b)){
+                if (IsOutOfBounds(startY + DirectionsPart1[currectDirection].a, startX + DirectionsPart1[currectDirection].b))
+                {
                     Console.WriteLine($"Day 6 Part 1 answer: {Visited.Count}");
                     break;
                 }
@@ -70,7 +73,7 @@
                         localIsLoop = false;
                         break;
                     }
-                     
+
                     if (localTempInput[nextY][nextX] == '#') localDirection = (localDirection + 1) % 4;
                     else
                     {

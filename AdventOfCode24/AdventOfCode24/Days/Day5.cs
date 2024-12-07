@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode24
+﻿using AdventOfCode24.Interfaces;
+
+namespace AdventOfCode24.Days
 {
     internal class Day5 : IDay
     {
@@ -49,10 +51,11 @@
         {
             int sum = 0;
             int mistakes = 0;
-            
+
             foreach (var update in updates)
             {
-                while (!IsCorrect(update)){
+                while (!IsCorrect(update))
+                {
                     mistakes++;
                     int x = update.IndexOf(swap.a);
                     int y = update.IndexOf(swap.b);
@@ -61,14 +64,14 @@
                     update[y] = swap.a;
                 }
 
-                if (mistakes > 0) 
+                if (mistakes > 0)
                 {
                     int middleValue = update[update.Count / 2];
                     sum += middleValue;
                     mistakes = 0;
                 }
             }
-            
+
 
             Console.WriteLine($"Day 5 Part 2 answer: {sum}");
         }

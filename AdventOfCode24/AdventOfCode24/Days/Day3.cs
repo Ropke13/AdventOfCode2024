@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
+using AdventOfCode24.Interfaces;
 
-namespace AdventOfCode24
+namespace AdventOfCode24.Days
 {
     internal class Day3 : IDay
     {

@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using AdventOfCode24.Interfaces;
+using AdventOfCode24.Settings;
+using System.Diagnostics;
 using System.Reflection;
 
 internal static class Init
@@ -11,7 +13,7 @@ internal static class Init
             Stopwatch stopwatch = new();
             stopwatch.Start();
 
-            IDay dayInstance = DayFactory.GetDayInstance(day);
+            IDay? dayInstance = DayFactory.GetDayInstance(day);
 
             if (dayInstance != null)
             {
@@ -21,6 +23,8 @@ internal static class Init
             else
             {
                 Console.WriteLine($"Day {day} is not implemented.");
+                stopwatch.Stop();
+                continue;
             }
 
             stopwatch.Stop();
@@ -31,27 +35,5 @@ internal static class Init
             Console.WriteLine($"Execution Time of the Day: {stopwatch.ElapsedMilliseconds} ms");
             Console.ResetColor();
         }
-    }
-}
-public interface IDay
-{
-    void Part1();
-    void Part2();
-}
-
-internal static class DayFactory
-{
-    public static IDay GetDayInstance(int day)
-    {
-        // Assuming classes follow the naming convention "DayX"
-        string className = $"AdventOfCode24.Day{day}";
-        Type type = Assembly.GetExecutingAssembly().GetType(className);
-
-        if (type != null && typeof(IDay).IsAssignableFrom(type))
-        {
-            return Activator.CreateInstance(type) as IDay;
-        }
-
-        return null;
     }
 }

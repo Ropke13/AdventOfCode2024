@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode24
+﻿using AdventOfCode24.Interfaces;
+
+namespace AdventOfCode24.Days
 {
     internal class Day1 : IDay
     {
