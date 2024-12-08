@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using AdventOfCode24.Interfaces;
+﻿using AdventOfCode24.Interfaces;
 
 namespace AdventOfCode24.Days
 {
