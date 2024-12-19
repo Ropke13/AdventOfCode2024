@@ -9,7 +9,7 @@ namespace AdventOfCode24.Days
     internal class Day16 : IDay
     {
         private readonly string[] input;
-        private char[,] maze;
+        private char[,]? maze;
         private (int x, int y) start;
         private (int x, int y) end;
 
@@ -54,7 +54,7 @@ namespace AdventOfCode24.Days
         private int FindShortestPath()
         {
             // Direction vectors: [0] = East, [1] = North, [2] = West, [3] = South
-            (int dx, int dy)[] directions = { (1, 0), (0, -1), (-1, 0), (0, 1) };
+            (int dx, int dy)[] directions = [(1, 0), (0, -1), (-1, 0), (0, 1)];
 
             // Priority queue: (cost, x, y, direction)
             var pq = new PriorityQueue<(int cost, int x, int y, int dir), int>();
@@ -79,7 +79,7 @@ namespace AdventOfCode24.Days
                 // Try moving forward
                 int nx = x + directions[dir].dx;
                 int ny = y + directions[dir].dy;
-                if (IsInBounds(nx, ny) && maze[ny, nx] != '#')
+                if (IsInBounds(nx, ny) && maze![ny, nx] != '#')
                 {
                     pq.Enqueue((cost + 1, nx, ny, dir), cost + 1);
                 }
@@ -111,7 +111,7 @@ namespace AdventOfCode24.Days
 
         private bool IsInBounds(int x, int y)
         {
-            return x >= 0 && x < maze.GetLength(1) && y >= 0 && y < maze.GetLength(0);
+            return x >= 0 && x < maze!.GetLength(1) && y >= 0 && y < maze!.GetLength(0);
         }
     }
 }
