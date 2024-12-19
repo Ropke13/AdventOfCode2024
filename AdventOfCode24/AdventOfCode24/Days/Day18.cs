@@ -6,7 +6,7 @@ namespace AdventOfCode24.Days
     {
         private readonly List<(int x, int y)> bytePositions;
         private const int GridSize = 70; // Adjusted to full problem scale.
-        private readonly HashSet<(int, int)> corruptedMemory = new();
+        private readonly HashSet<(int, int)> corruptedMemory = [];
         private readonly (int x, int y) start = (0, 0);
         private readonly (int x, int y) end = (70, 70);
 

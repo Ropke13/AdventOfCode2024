@@ -144,18 +144,18 @@ namespace AdventOfCode24.Days
                     newRobs[(newY, newX)] = 1;
                 }
             }
-            for (int y = 0; y < gridY; y++)
-            {
-                for (int x = 0; x < gridX; x++)
-                {
-                    if (newRobs.ContainsKey((y, x)))
-                    {
-                        Console.Write("# ");
-                    }
-                    else { Console.Write(". "); }
-                }
-                Console.WriteLine();
-            }
+            //for (int y = 0; y < gridY; y++)
+            //{
+            //    for (int x = 0; x < gridX; x++)
+            //    {
+            //        if (newRobs.ContainsKey((y, x)))
+            //        {
+            //            Console.Write("# ");
+            //        }
+            //        else { Console.Write(". "); }
+            //    }
+            //    Console.WriteLine();
+            //}
 
             Console.WriteLine($"Day 14 Part 2 answer: {seconds}");
         }

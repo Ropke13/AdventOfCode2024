@@ -136,7 +136,7 @@ namespace AdventOfCode24.Days
                 //    }
                 //    Console.WriteLine();
                 //}
-                Console.WriteLine($"{movenr}/{robCommands.Count()}");
+                //Console.WriteLine($"{movenr}/{robCommands.Count()}");
                 movenr++;
                 //Console.ReadLine();
                 if (c == '<')
@@ -177,32 +177,18 @@ namespace AdventOfCode24.Days
                 
             }
 
-            int sum = 0;
-            for (int i = 0; i < mapL.Length; i++)
-            {
-                for (int j = 0; j < mapL[i].Length; j++)
-                {
-                    Console.Write(mapL[i][j]);
-                    if (mapL[i][j] == 'O')
-                    {
-                        sum += 100 * i + j;
-                    }
-                }
-                Console.WriteLine();
-            }
-
             int sums = 0;
             for (int i = 0; i < mapL.Length; i++)
             {
                 for (int j = 0; j < mapL[i].Length; j++)
                 {
-                    Console.Write(mapL[i][j]);
+                    //Console.Write(mapL[i][j]);
                     if (mapL[i][j] == '[')
                     {
                         sums += 100 * i + j;
                     }
                 }
-                Console.WriteLine();
+                //Console.WriteLine();
             }
             Console.WriteLine($"Day 15 Part 2 answer:{sums}");
         }
