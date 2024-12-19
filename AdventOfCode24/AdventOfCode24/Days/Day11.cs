@@ -1,5 +1,4 @@
 ﻿using AdventOfCode24.Interfaces;
-using System.Collections.Generic;
 using System.Numerics;
 
 namespace AdventOfCode24.Days

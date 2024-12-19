@@ -1,5 +1,4 @@
 ﻿using AdventOfCode24.Interfaces;
-using System.Data.SqlTypes;
 
 namespace AdventOfCode24.Days
 {
